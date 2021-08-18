@@ -35,7 +35,6 @@ def setup():
     return kwargs
 
 def login(url, data, kwargs={}):
-    print(kwargs)
     try:
         res = req.post(url, data=data, **kwargs)
         return res
@@ -44,8 +43,6 @@ def login(url, data, kwargs={}):
         sys.exit(1)
         
 def check(res):
-    print(res.status_code)
-    print(res.text)
     if res.status_code != 200:
         print("login fail - response code(%d)"%res.status_code)
         sys.exit(1)
@@ -54,7 +51,7 @@ def check(res):
         print(res.text)
         sys.exit(1)
     else:
-        pass
+        print(res.text)
 
 def main():
     kwargs = setup()
